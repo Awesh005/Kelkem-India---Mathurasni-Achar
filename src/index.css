@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-mustard: #D4AF37;
+  --color-spice-red: #8B0000;
+  --color-warm-bg: #FDFCF8;
+  --color-ink: #1A1A1A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-warm-bg text-ink font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+.glass-nav {
+  @apply bg-white/90 backdrop-blur-xl border-b border-stone-100 sticky top-0 z-50;
+}
+
+.btn-primary {
+  @apply bg-spice-red text-white px-10 py-4 rounded-full font-semibold transition-all duration-500 hover:bg-ink hover:shadow-2xl hover:-translate-y-1 active:scale-95 uppercase tracking-widest text-xs;
+}
+
+.btn-secondary {
+  @apply bg-mustard text-white px-10 py-4 rounded-full font-semibold transition-all duration-500 hover:bg-ink hover:shadow-2xl hover:-translate-y-1 active:scale-95 uppercase tracking-widest text-xs;
+}
+
+.section-padding {
+  @apply py-24 px-6 md:px-16 lg:px-32;
+}
+
+.fmcg-card {
+  @apply bg-white rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-stone-100 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] hover:-translate-y-2;
+}
+
+.text-reveal {
+  @apply overflow-hidden inline-block;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-stone-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-stone-300 rounded-full hover:bg-spice-red transition-colors;
+}
