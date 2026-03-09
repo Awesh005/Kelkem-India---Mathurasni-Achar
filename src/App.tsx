@@ -1686,26 +1686,28 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
             </div>
           </div>
 
-          <div>
-            <h4 className="font-bold text-lg mb-8 uppercase tracking-widest text-xs text-mustard">Quick Links</h4>
-            <ul className="space-y-5 text-stone-400 text-sm font-light">
-              <li><button onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Home</button></li>
-              <li><button onClick={() => { setCurrentPage('company'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Our Company</button></li>
-              <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Products</button></li>
-              <li><button onClick={() => { setCurrentPage('gallery'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Visual Gallery</button></li>
-              <li><button onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Contact Us</button></li>
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 gap-8 md:contents">
+            <div>
+              <h4 className="font-bold text-lg mb-8 uppercase tracking-widest text-xs text-mustard">Quick Links</h4>
+              <ul className="space-y-5 text-stone-400 text-sm font-light">
+                <li><button onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Home</button></li>
+                <li><button onClick={() => { setCurrentPage('company'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Our Company</button></li>
+                <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Products</button></li>
+                <li><button onClick={() => { setCurrentPage('gallery'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Visual Gallery</button></li>
+                <li><button onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Contact Us</button></li>
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="font-bold text-lg mb-8 uppercase tracking-widest text-xs text-mustard">Our Products</h4>
-            <ul className="space-y-5 text-stone-400 text-sm font-light">
-              <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Mango Pickle</button></li>
-              <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Lime Pickle</button></li>
-              <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Mixed Veg Pickle</button></li>
-              <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Red Chilli Pickle</button></li>
-              <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Premium Spices</button></li>
-            </ul>
+            <div>
+              <h4 className="font-bold text-lg mb-8 uppercase tracking-widest text-xs text-mustard">Our Products</h4>
+              <ul className="space-y-5 text-stone-400 text-sm font-light">
+                <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Mango Pickle</button></li>
+                <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Lime Pickle</button></li>
+                <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Mixed Veg Pickle</button></li>
+                <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Red Chilli Pickle</button></li>
+                <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Premium Spices</button></li>
+              </ul>
+            </div>
           </div>
 
           <div>
