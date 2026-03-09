@@ -26,7 +26,8 @@ import {
   Heart,
   Handshake,
   CheckCircle2,
-  ChevronDown
+  ChevronDown,
+  Quote
 } from 'lucide-react';
 
 // --- Components ---
@@ -46,7 +47,8 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
     { name: 'Home', id: 'home' },
     { name: 'Company', id: 'company', dropdown: [
       { name: 'About Us', id: 'company' },
-      { name: 'Founder Message', id: 'founder' }
+      { name: 'Founder Message', id: 'founder' },
+      { name: 'Co-Founder Message', id: 'co-founder' }
     ]},
     { name: 'Products', id: 'products' },
     { name: 'Gallery', id: 'gallery' },
@@ -54,20 +56,8 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
   ];
 
   const handleNavClick = (id: string) => {
-    if (id === 'company') {
-      setCurrentPage('company');
-      window.scrollTo(0, 0);
-    } else if (id === 'founder') {
-      setCurrentPage('founder');
-      window.scrollTo(0, 0);
-    } else if (id === 'products') {
-      setCurrentPage('products');
-      window.scrollTo(0, 0);
-    } else if (id === 'gallery') {
-      setCurrentPage('gallery');
-      window.scrollTo(0, 0);
-    } else if (id === 'contact') {
-      setCurrentPage('contact');
+    if (['company', 'founder', 'co-founder', 'products', 'gallery', 'contact'].includes(id)) {
+      setCurrentPage(id);
       window.scrollTo(0, 0);
     } else {
       setCurrentPage('home');
@@ -85,13 +75,13 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
   return (
     <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled || currentPage !== 'home' ? 'bg-white/80 backdrop-blur-2xl shadow-sm py-4' : 'bg-transparent py-8'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-3 cursor-pointer group" onClick={() => handleNavClick('home')}>
-          <div className="w-14 h-14 bg-white rounded-2xl overflow-hidden flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform duration-500 border border-stone-100">
+        <div className="flex items-center gap-2 md:gap-3 cursor-pointer group" onClick={() => handleNavClick('home')}>
+          <div className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-xl md:rounded-2xl overflow-hidden flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform duration-500 border border-stone-100">
             <img src="/company logo.jpeg" alt="Kelkem Logo" className="w-full h-full object-contain p-1" />
           </div>
           <div>
-            <h1 className={`text-2xl font-bold leading-none tracking-tighter ${scrolled || currentPage !== 'home' ? 'text-spice-red' : 'text-white'}`}>Mathurasni</h1>
-            <p className={`text-[10px] uppercase tracking-[0.3em] font-bold ${scrolled || currentPage !== 'home' ? 'text-mustard' : 'text-mustard/80'}`}>Achar & Spices</p>
+            <h1 className={`text-lg md:text-2xl font-bold leading-none tracking-tighter ${scrolled || currentPage !== 'home' ? 'text-spice-red' : 'text-white'}`}>Mathurasni</h1>
+            <p className={`text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold ${scrolled || currentPage !== 'home' ? 'text-mustard' : 'text-mustard/80'}`}>Achar & Spices • Since 1977</p>
           </div>
         </div>
 
@@ -157,9 +147,9 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-0 w-full bg-white shadow-2xl border-t border-stone-100 overflow-hidden"
+            className="md:hidden absolute top-full left-0 w-full bg-white shadow-2xl border-t border-stone-100 overflow-y-auto max-h-[80vh]"
           >
-            <div className="flex flex-col p-8 gap-6">
+            <div className="flex flex-col p-6 md:p-8 gap-6">
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col gap-4">
                   <button 
@@ -221,7 +211,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-stone-900 via-stone-900/40 to-transparent"></div>
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-56 pb-20 md:pt-40">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-32 pb-20 md:pt-40">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -230,9 +220,9 @@ const Hero = () => {
           >
             <span className="inline-flex items-center gap-2 py-2 px-5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
               <span className="w-2 h-2 bg-mustard rounded-full animate-pulse"></span>
-              Kelkem India Pvt Ltd
+              Kelkem India Pvt Ltd • Since 1977
             </span>
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-[0.9] text-white">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-[0.9] text-white">
               Taste the <span className="text-mustard italic font-serif font-medium">Soul</span> of India.
             </h1>
             <p className="text-xl md:text-2xl text-stone-300 mb-12 leading-relaxed font-light max-w-xl">
@@ -312,9 +302,9 @@ const CompanyPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto relative z-10"
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Our Legacy</span>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Our Company</h1>
-          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Kelkem India Pvt Ltd</p>
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Our Legacy • Since 1977</span>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Our Company</h1>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Kelkem India Pvt Ltd • Since 1977</p>
         </motion.div>
       </section>
 
@@ -329,10 +319,10 @@ const CompanyPage = () => {
         viewport={{ once: true }}
       >
         <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">
-          About Us
+          About Us • Since 1977
         </span>
 
-        <h2 className="text-5xl md:text-7xl font-bold mt-4 mb-10 text-stone-900 leading-[1.1]">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold mt-4 mb-10 text-stone-900 leading-[1.1]">
           Authentic Taste, <br/>
           <span className="text-spice-red italic font-serif font-medium">
             Modern
@@ -341,7 +331,7 @@ const CompanyPage = () => {
 
         <div className="space-y-8 text-stone-600 leading-relaxed text-lg font-light">
           <p>
-            Kelkem India Private Limited is an emerging Indian company engaged in the manufacturing, marketing, and distribution of quality food products, pickles, spices, and FMCG goods.
+            Kelkem India Private Limited, with a legacy dating back to 1977, is an emerging Indian company engaged in the manufacturing, marketing, and distribution of quality food products, pickles, spices, and FMCG goods.
           </p>
           <p>
             The company focuses on delivering traditional Indian flavors with modern quality standards, hygienic production, and reliable distribution.
@@ -389,10 +379,10 @@ const CompanyPage = () => {
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 100, delay: 0.5 }}
-          className="absolute -bottom-10 -left-10 bg-mustard p-10 rounded-[2rem] text-white shadow-2xl"
+          className="absolute -bottom-10 -left-10 bg-mustard p-6 md:p-10 rounded-[1.5rem] md:rounded-[2rem] text-white shadow-2xl hidden sm:block"
         >
-          <Award size={48} />
-          <p className="mt-4 font-bold text-xl uppercase tracking-widest">
+          <Award size={32} className="md:w-12 md:h-12" />
+          <p className="mt-4 font-bold text-lg md:text-xl uppercase tracking-widest">
             Quality <br/> Certified
           </p>
         </motion.div>
@@ -415,7 +405,7 @@ const CompanyPage = () => {
               <div className="w-20 h-20 bg-mustard/10 rounded-2xl flex items-center justify-center text-mustard mb-10 shadow-inner">
                 <Rocket size={40} />
               </div>
-              <h3 className="text-4xl font-bold mb-8 text-stone-900">Our Vision</h3>
+            <h3 className="text-2xl sm:text-4xl font-bold mb-8 text-stone-900">Our Vision</h3>
               <p className="text-stone-600 text-xl leading-relaxed font-light">
                 To establish Kelkem India Pvt Ltd as a trusted and leading Indian FMCG company delivering high-quality food products and traditional flavors across India and international markets.
               </p>
@@ -429,7 +419,7 @@ const CompanyPage = () => {
               <div className="w-20 h-20 bg-spice-red/10 rounded-2xl flex items-center justify-center text-spice-red mb-10 shadow-inner">
                 <Target size={40} />
               </div>
-              <h3 className="text-4xl font-bold mb-8 text-stone-900">Our Mission</h3>
+            <h3 className="text-2xl sm:text-4xl font-bold mb-8 text-stone-900">Our Mission</h3>
               <ul className="space-y-6">
                 {missionPoints.map((point, i) => (
                   <li key={i} className="flex gap-4 text-stone-600 text-lg font-light">
@@ -451,8 +441,8 @@ const CompanyPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">The Foundation</span>
-            <h2 className="text-5xl md:text-7xl font-bold mt-4 mb-20 text-stone-900">Our Core Values</h2>
+            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">The Foundation • Since 1977</span>
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold mt-4 mb-12 md:mb-20 text-stone-900">Our Core Values</h2>
           </motion.div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
@@ -681,9 +671,9 @@ const ProductsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto relative z-10"
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Our Collection</span>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Our Products</h1>
-          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Mathurasni Achar & Spices</p>
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Our Collection • Since 1977</span>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Our Products</h1>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Mathurasni Achar & Spices • Since 1977</p>
         </motion.div>
       </section>
 
@@ -706,7 +696,7 @@ const ProductsPage = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((product) => (
                 <motion.div 
@@ -716,7 +706,7 @@ const ProductsPage = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   key={product.id}
                   onClick={() => setSelectedImage(product.image)}
-                  className="fmcg-card group cursor-pointer flex flex-col h-full"
+                  className="fmcg-card group cursor-pointer"
                 >
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <img 
@@ -729,12 +719,12 @@ const ProductsPage = () => {
                       {product.category}
                     </div>
                   </div>
-                  <div className="p-10 flex flex-col flex-grow">
+                  <div className="p-10">
                     <h3 className="text-3xl font-bold text-stone-900 mb-4 group-hover:text-spice-red transition-colors">{product.name}</h3>
                     <p className="text-stone-500 text-base leading-relaxed mb-8 font-light">
                       {product.desc}
                     </p>
-                    <div className="flex flex-col gap-4 pt-8 border-t border-stone-50 mt-auto">
+                    <div className="flex flex-col gap-4 pt-8 border-t border-stone-50">
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
@@ -869,16 +859,16 @@ const GalleryPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto relative z-10"
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Visual Journey</span>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Our Gallery</h1>
-          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Capturing the Essence of Tradition</p>
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Visual Journey • Since 1977</span>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Our Gallery</h1>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Capturing the Essence of Tradition • Since 1977</p>
         </motion.div>
       </section>
 
       {/* Gallery Grid */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-8 space-y-4 md:space-y-8">
             {images.map((img, i) => (
               <motion.div 
                 key={i}
@@ -956,57 +946,34 @@ const FounderMessagePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto relative z-10"
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Leadership</span>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Founders' Message</h1>
-          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">A Vision for Authentic Taste</p>
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Leadership • Since 1977</span>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Founder's Message</h1>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">A Vision for Authentic Taste • Since 1977</p>
         </motion.div>
       </section>
 
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
-                  <img 
-                    src="./boy.png" 
-                    alt="KAPIL PRASAD" 
-                    className="w-full h-auto rounded-[2.5rem]"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -right-6 bg-spice-red p-6 rounded-[1.5rem] text-white shadow-2xl z-10">
-                  <h4 className="font-bold text-lg">KAPIL PRASAD</h4>
-                  <p className="text-white/80 uppercase tracking-widest text-[10px] mt-1">Founder</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="relative"
-              >
-                <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
-                  <img 
-                    src="./girl.png" 
-                    alt="Meghna Bharti" 
-                    className="w-full h-auto rounded-[2.5rem]"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -right-6 bg-mustard p-6 rounded-[1.5rem] text-white shadow-2xl z-10">
-                  <h4 className="font-bold text-lg">Meghna Bharti</h4>
-                  <p className="text-white/80 uppercase tracking-widest text-[10px] mt-1">Founder</p>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative max-w-md mx-auto lg:mx-0"
+            >
+              <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
+                <img 
+                  src="./male.png" 
+                  alt="KAPIL PRASAD" 
+                  className="w-full h-auto rounded-[2.5rem]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-spice-red p-8 rounded-[1.5rem] text-white shadow-2xl z-10">
+                <h4 className="font-bold text-2xl">KAPIL PRASAD</h4>
+                <p className="text-white/80 uppercase tracking-widest text-xs mt-1">Founder</p>
+              </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -1014,6 +981,7 @@ const FounderMessagePage = () => {
               viewport={{ once: true }}
               className="space-y-8"
             >
+              <div className="text-spice-red mb-6"><Quote size={64} className="opacity-20" /></div>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
                 "Our journey is rooted in the belief that <span className="text-spice-red">quality</span> and <span className="text-mustard">tradition</span> should never be compromised."
               </h2>
@@ -1031,11 +999,87 @@ const FounderMessagePage = () => {
                   Thank you for being a part of our journey. We promise to continue delivering the purity and taste that you and your family deserve.
                 </p>
               </div>
-              <div className="pt-8 border-t border-stone-100 flex flex-col gap-2">
-                <div>
-                  <p className="font-bold text-stone-900">KAPIL PRASAD & Meghna Bharti</p>
-                  <p className="text-stone-400 text-sm">Founders, Kelkem India Pvt Ltd</p>
-                </div>
+              <div className="pt-8 border-t border-stone-100">
+                <p className="font-bold text-stone-900 text-xl">KAPIL PRASAD</p>
+                <p className="text-stone-400 text-sm">Founder, Kelkem India Pvt Ltd</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+const CoFounderMessagePage = () => {
+  return (
+    <div className="pt-24 bg-warm-bg min-h-screen">
+      <section className="bg-stone-900 py-32 px-6 text-center text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=2000" 
+            className="w-full h-full object-cover"
+            alt="Co-Founder Background"
+          />
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mx-auto relative z-10"
+        >
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Leadership • Since 1977</span>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Co-Founder's Message</h1>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Empowering Tradition & Innovation • Since 1977</p>
+        </motion.div>
+      </section>
+
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative max-w-md mx-auto lg:mx-0 order-1 lg:order-2"
+            >
+              <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000" 
+                  alt="Meghna Bharti" 
+                  className="w-full h-auto rounded-[2.5rem]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-mustard p-8 rounded-[1.5rem] text-white shadow-2xl z-10">
+                <h4 className="font-bold text-2xl">Meghna Bharti</h4>
+                <p className="text-white/80 uppercase tracking-widest text-xs mt-1">Co-Founder</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8 order-2 lg:order-1"
+            >
+              <div className="text-mustard mb-6"><Quote size={64} className="opacity-20" /></div>
+              <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+                "Reviving our <span className="text-spice-red">legacy</span> with a vision for <span className="text-mustard">empowerment</span> and growth."
+              </h2>
+              <div className="space-y-6 text-stone-600 text-lg font-light leading-relaxed">
+                <p>
+                  Meghna Bharti is the Co-Founder of Kelkem India Pvt Ltd and represents the new generation of leadership continuing the family’s business legacy. Coming from a family that has been associated with traditional food products for generations, she carries forward the values and traditions that define the brand.
+                </p>
+                <p>
+                  She strongly believes in <strong>women empowerment</strong> and actively supports the idea that women should have equal opportunities to lead, grow, and build successful businesses. With the encouragement and support of her family, she has been able to pursue both her professional career and contribute to the company’s growth.
+                </p>
+                <p>
+                  The family business had faced challenges in the past and remained paused for some time. Today, with renewed vision and determination, Meghna Bharti is helping revive the legacy and guiding the company toward new heights.
+                </p>
+              </div>
+              <div className="pt-8 border-t border-stone-100">
+                <p className="font-bold text-stone-900 text-xl">Meghna Bharti</p>
+                <p className="text-stone-400 text-sm">Co-Founder, Kelkem India Pvt Ltd</p>
               </div>
             </motion.div>
           </div>
@@ -1062,9 +1106,9 @@ const ContactPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto relative z-10"
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Get in Touch</span>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Contact Us</h1>
-          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">We'd Love to Hear from You</p>
+          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Get in Touch</span>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Contact Us</h1>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">We'd Love to Hear from You • Since 1977</p>
         </motion.div>
       </section>
 
@@ -1213,8 +1257,8 @@ const InstagramSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Social Community</span>
-          <h2 className="text-4xl md:text-6xl font-bold text-stone-900 mb-4">Join the <span className="text-spice-red italic font-serif font-medium">Flavor</span> Family</h2>
+          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Social Community • Since 1977</span>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-stone-900 mb-4">Join the <span className="text-spice-red italic font-serif font-medium">Flavor</span> Family</h2>
           <p className="text-stone-500 font-light text-lg">Follow us for daily inspiration and traditional recipes</p>
           <a 
             href="https://www.instagram.com/achar_by_mathurasin?igsh=aWZ2YnFhcGpzZzFw" 
@@ -1233,7 +1277,7 @@ const InstagramSection = () => {
             <motion.div 
               key={i} 
               whileHover={{ y: -10, scale: 1.05 }}
-              className="w-72 h-72 shrink-0 rounded-[2rem] overflow-hidden group relative shadow-xl border border-stone-100"
+              className="w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-[1.5rem] md:rounded-[2rem] overflow-hidden group relative shadow-xl border border-stone-100"
             >
               <img 
                 src={img} 
@@ -1271,8 +1315,8 @@ const ContactCTA = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-8 block">Experience the Heritage</span>
-          <h2 className="text-5xl md:text-8xl font-bold mb-10 leading-[0.9]">Ready to Taste <br/><span className="text-mustard italic font-serif font-medium">Tradition?</span></h2>
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-8 block">Experience the Heritage • Since 1977</span>
+          <h2 className="text-3xl sm:text-5xl md:text-8xl font-bold mb-10 leading-[0.9]">Ready to Taste <br/><span className="text-mustard italic font-serif font-medium">Tradition?</span></h2>
           <p className="text-xl md:text-2xl text-white/70 mb-16 max-w-2xl mx-auto font-light leading-relaxed">
             Whether you're looking for bulk orders, distributorship, or just want to share your love for pickles, we're here to connect.
           </p>
@@ -1299,7 +1343,7 @@ const ContactCTA = () => {
   );
 };
 
-const Company = () => {
+const Company = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) => {
   return (
     <section id="company" className="section-padding bg-warm-bg overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -1334,8 +1378,8 @@ const Company = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">About Kelkem India</span>
-            <h2 className="text-5xl md:text-7xl font-bold mt-4 mb-10 text-stone-900 leading-[1.1]">Legacy of Taste, <br/><span className="text-spice-red italic font-serif font-medium">Promise</span> of Quality.</h2>
+            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">About Kelkem India • Since 1977</span>
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold mt-4 mb-10 text-stone-900 leading-[1.1]">Legacy of Taste, <br/><span className="text-spice-red italic font-serif font-medium">Promise</span> of Quality.</h2>
             <p className="text-stone-600 mb-8 text-lg leading-relaxed font-light">
               Kelkem India Pvt Ltd is a pioneer in the FMCG sector, dedicated to bringing the authentic taste of India to global kitchens. Our flagship brand, <strong className="text-stone-900">Mathurasni Achar</strong>, is more than just a pickle; it's a journey through the vibrant spice markets and traditional kitchens of India.
             </p>
@@ -1364,7 +1408,12 @@ const Company = () => {
               </div>
             </div>
 
-            <button className="btn-primary mt-16">Discover Our Story</button>
+            <button 
+              onClick={() => { setCurrentPage('company'); window.scrollTo(0, 0); }}
+              className="btn-primary mt-16"
+            >
+              Discover Our Story
+            </button>
           </motion.div>
         </div>
       </div>
@@ -1523,8 +1572,8 @@ const Products = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Our Collection</span>
-          <h2 className="text-5xl md:text-7xl font-bold mt-4 mb-16 text-stone-900">Flavors for Every Palate</h2>
+          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Our Collection • Since 1977</span>
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold mt-4 mb-16 text-stone-900">Flavors for Every Palate</h2>
         </motion.div>
         
         <div className="flex justify-center gap-4 mb-16 overflow-x-auto pb-4 no-scrollbar">
@@ -1543,7 +1592,7 @@ const Products = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
               <motion.div 
@@ -1553,7 +1602,7 @@ const Products = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 key={product.id}
                 onClick={() => setSelectedImage(product.image)}
-                className="fmcg-card group cursor-pointer flex flex-col h-full"
+                className="fmcg-card group cursor-pointer"
               >
                 <div className="aspect-square overflow-hidden relative">
                   <img 
@@ -1655,8 +1704,8 @@ const Gallery = () => {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Visual Journey</span>
-            <h2 className="text-5xl md:text-7xl font-bold mt-4 leading-[1.1]">Capturing the <span className="text-mustard italic font-serif font-medium">Essence</span> of Mathurasni</h2>
+            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Visual Journey • Since 1977</span>
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold mt-4 leading-[1.1]">Capturing the <span className="text-mustard italic font-serif font-medium">Essence</span> of Mathurasni</h2>
           </motion.div>
           <motion.button 
             whileHover={{ x: 10 }}
@@ -1703,10 +1752,10 @@ const Contact = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="p-12 md:p-20"
+            className="p-8 md:p-20"
           >
-            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Get in Touch</span>
-            <h2 className="text-5xl font-bold text-stone-900 mb-10 leading-tight">We'd love to <br/>hear from you.</h2>
+            <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Get in Touch • Since 1977</span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-stone-900 mb-10 leading-tight">We'd love to <br/>hear from you.</h2>
             <form className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
@@ -1739,7 +1788,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-stone-900 p-12 md:p-20 text-white flex flex-col justify-between relative overflow-hidden"
+            className="bg-stone-900 p-8 md:p-20 text-white flex flex-col justify-between relative overflow-hidden"
           >
             {/* Decorative background element */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-spice-red/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
@@ -1811,8 +1860,8 @@ const MapSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Find Us</span>
-          <h2 className="text-5xl font-bold text-stone-900">Our Location</h2>
+          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Find Us • Since 1977</span>
+          <h2 className="text-3xl sm:text-5xl font-bold text-stone-900">Our Location</h2>
         </motion.div>
         
         <div className="rounded-[3rem] overflow-hidden shadow-2xl border border-stone-100 h-[500px] relative group">
@@ -1856,7 +1905,7 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
               </div>
               <div>
                 <h1 className="text-2xl font-bold leading-none text-white tracking-tighter">Mathurasni</h1>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Achar & Spices</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Achar & Spices • Since 1977</p>
               </div>
             </div>
             <p className="text-stone-400 text-sm leading-relaxed font-light">
@@ -1875,6 +1924,8 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
               <ul className="space-y-5 text-stone-400 text-sm font-light">
                 <li><button onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Home</button></li>
                 <li><button onClick={() => { setCurrentPage('company'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Our Company</button></li>
+                <li><button onClick={() => { setCurrentPage('founder'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Founder Message</button></li>
+                <li><button onClick={() => { setCurrentPage('co-founder'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Co-Founder Message</button></li>
                 <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Products</button></li>
                 <li><button onClick={() => { setCurrentPage('gallery'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Visual Gallery</button></li>
                 <li><button onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Contact Us</button></li>
@@ -1985,7 +2036,7 @@ const ScrollToTop = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 z-[60] w-14 h-14 bg-spice-red text-white rounded-2xl shadow-2xl flex items-center justify-center hover:bg-mustard transition-all duration-500 hover:-translate-y-2 group"
+          className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] w-12 h-12 md:w-14 md:h-14 bg-spice-red text-white rounded-xl md:rounded-2xl shadow-2xl flex items-center justify-center hover:bg-mustard transition-all duration-500 hover:-translate-y-2 group"
         >
           <ChevronRight size={28} className="-rotate-90 group-hover:-translate-y-1 transition-transform" />
         </motion.button>
@@ -2005,7 +2056,7 @@ export default function App() {
         {currentPage === 'home' ? (
           <>
             <Hero />
-            <Company />
+            <Company setCurrentPage={setCurrentPage} />
             <Products />
             <Gallery />
             <InstagramSection />
@@ -2017,6 +2068,8 @@ export default function App() {
           <CompanyPage />
         ) : currentPage === 'founder' ? (
           <FounderMessagePage />
+        ) : currentPage === 'co-founder' ? (
+          <CoFounderMessagePage />
         ) : currentPage === 'products' ? (
           <ProductsPage />
         ) : currentPage === 'gallery' ? (
