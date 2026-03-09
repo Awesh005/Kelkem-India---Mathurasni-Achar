@@ -27,7 +27,8 @@ import {
   Handshake,
   CheckCircle2,
   ChevronDown,
-  Quote
+  Quote,
+  MessageCircle
 } from 'lucide-react';
 
 // --- Components ---
@@ -963,7 +964,7 @@ const FounderMessagePage = () => {
             >
               <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
                 <img 
-                  src="./male.png" 
+                  src="./boy.png" 
                   alt="KAPIL PRASAD" 
                   className="w-full h-auto rounded-[2.5rem]"
                   referrerPolicy="no-referrer"
@@ -1044,7 +1045,7 @@ const CoFounderMessagePage = () => {
             >
               <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1000" 
+                  src="./girl.png" 
                   alt="Meghna Bharti" 
                   className="w-full h-auto rounded-[2.5rem]"
                   referrerPolicy="no-referrer"
@@ -2005,6 +2006,38 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
   );
 };
 
+const FloatingActions = () => {
+  return (
+    <div className="fixed bottom-24 right-6 md:bottom-28 md:right-10 z-[60] flex flex-col gap-4">
+      {/* WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/917544866033"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0.5, x: 20 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        whileHover={{ scale: 1.1, y: -5 }}
+        className="w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-xl md:rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-300 group"
+        title="Chat on WhatsApp"
+      >
+        <MessageCircle size={28} className="group-hover:scale-110 transition-transform" />
+      </motion.a>
+
+      {/* Call Button */}
+      <motion.a
+        href="tel:07544866033"
+        initial={{ opacity: 0, scale: 0.5, x: 20 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        whileHover={{ scale: 1.1, y: -5 }}
+        className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 text-white rounded-xl md:rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-300 group"
+        title="Call Us"
+      >
+        <Phone size={24} className="group-hover:rotate-12 transition-transform" />
+      </motion.a>
+    </div>
+  );
+};
+
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -2080,6 +2113,7 @@ export default function App() {
       </main>
       
       <Footer setCurrentPage={setCurrentPage} />
+      <FloatingActions />
       <ScrollToTop />
     </div>
   );
