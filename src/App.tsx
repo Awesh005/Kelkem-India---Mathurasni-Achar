@@ -25,7 +25,8 @@ import {
   Lightbulb,
   Heart,
   Handshake,
-  CheckCircle2
+  CheckCircle2,
+  ChevronDown
 } from 'lucide-react';
 
 // --- Components ---
@@ -33,6 +34,7 @@ import {
 const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurrentPage: (page: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isCompanyOpen, setIsCompanyOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -42,7 +44,10 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
 
   const navLinks = [
     { name: 'Home', id: 'home' },
-    { name: 'Company', id: 'company' },
+    { name: 'Company', id: 'company', dropdown: [
+      { name: 'About Us', id: 'company' },
+      { name: 'Founder Message', id: 'founder' }
+    ]},
     { name: 'Products', id: 'products' },
     { name: 'Gallery', id: 'gallery' },
     { name: 'Contact', id: 'contact' },
@@ -51,6 +56,9 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
   const handleNavClick = (id: string) => {
     if (id === 'company') {
       setCurrentPage('company');
+      window.scrollTo(0, 0);
+    } else if (id === 'founder') {
+      setCurrentPage('founder');
       window.scrollTo(0, 0);
     } else if (id === 'products') {
       setCurrentPage('products');
@@ -71,6 +79,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
       }, 100);
     }
     setIsOpen(false);
+    setIsCompanyOpen(false);
   };
 
   return (
@@ -89,18 +98,48 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <button 
+            <div 
               key={link.name} 
-              onClick={() => handleNavClick(link.id)}
-              className={`font-semibold transition-all duration-300 text-[11px] uppercase tracking-[0.2em] relative group ${
-                currentPage === link.id 
-                  ? 'text-spice-red' 
-                  : (scrolled || currentPage !== 'home' ? 'text-stone-500 hover:text-spice-red' : 'text-white/80 hover:text-white')
-              }`}
+              className="relative group/nav"
+              onMouseEnter={() => link.dropdown && setIsCompanyOpen(true)}
+              onMouseLeave={() => link.dropdown && setIsCompanyOpen(false)}
             >
-              {link.name}
-              <span className={`absolute -bottom-2 left-0 w-full h-0.5 bg-spice-red transition-transform duration-300 origin-left ${currentPage === link.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-            </button>
+              <button 
+                onClick={() => !link.dropdown && handleNavClick(link.id)}
+                className={`font-semibold transition-all duration-300 text-[11px] uppercase tracking-[0.2em] flex items-center gap-1 group ${
+                  (currentPage === link.id || (link.dropdown && link.dropdown.some(d => d.id === currentPage)))
+                    ? 'text-spice-red' 
+                    : (scrolled || currentPage !== 'home' ? 'text-stone-500 hover:text-spice-red' : 'text-white/80 hover:text-white')
+                }`}
+              >
+                {link.name}
+                {link.dropdown && <ChevronDown size={14} className={`transition-transform duration-300 ${isCompanyOpen ? 'rotate-180' : ''}`} />}
+                <span className={`absolute -bottom-2 left-0 w-full h-0.5 bg-spice-red transition-transform duration-300 origin-left ${(currentPage === link.id || (link.dropdown && link.dropdown.some(d => d.id === currentPage))) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+              </button>
+
+              {link.dropdown && (
+                <AnimatePresence>
+                  {isCompanyOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      className="absolute top-full left-0 mt-4 w-56 bg-white rounded-2xl shadow-2xl border border-stone-100 overflow-hidden py-2"
+                    >
+                      {link.dropdown.map((subItem) => (
+                        <button
+                          key={subItem.name}
+                          onClick={() => handleNavClick(subItem.id)}
+                          className={`w-full text-left px-6 py-3 text-[11px] uppercase tracking-widest font-bold transition-all duration-300 hover:bg-stone-50 ${currentPage === subItem.id ? 'text-spice-red bg-stone-50' : 'text-stone-600 hover:text-spice-red'}`}
+                        >
+                          {subItem.name}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              )}
+            </div>
           ))}
           <button className={`btn-primary ${scrolled || currentPage !== 'home' ? '' : 'shadow-2xl shadow-spice-red/40'}`}>Shop Now</button>
         </div>
@@ -122,13 +161,37 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
           >
             <div className="flex flex-col p-8 gap-6">
               {navLinks.map((link) => (
-                <button 
-                  key={link.name} 
-                  onClick={() => handleNavClick(link.id)}
-                  className="text-stone-800 text-left text-2xl font-serif font-bold hover:text-spice-red transition-colors"
-                >
-                  {link.name}
-                </button>
+                <div key={link.name} className="flex flex-col gap-4">
+                  <button 
+                    onClick={() => {
+                      if (link.dropdown) {
+                        setIsCompanyOpen(!isCompanyOpen);
+                      } else {
+                        handleNavClick(link.id);
+                      }
+                    }}
+                    className={`text-left text-2xl font-serif font-bold transition-colors flex items-center justify-between ${
+                      (currentPage === link.id || (link.dropdown && link.dropdown.some(d => d.id === currentPage))) ? 'text-spice-red' : 'text-stone-800'
+                    }`}
+                  >
+                    {link.name}
+                    {link.dropdown && <ChevronDown size={24} className={`transition-transform duration-300 ${isCompanyOpen ? 'rotate-180' : ''}`} />}
+                  </button>
+                  
+                  {link.dropdown && isCompanyOpen && (
+                    <div className="flex flex-col gap-4 pl-6 border-l-2 border-stone-100">
+                      {link.dropdown.map((subItem) => (
+                        <button
+                          key={subItem.name}
+                          onClick={() => handleNavClick(subItem.id)}
+                          className={`text-left text-lg font-serif font-medium transition-colors ${currentPage === subItem.id ? 'text-spice-red' : 'text-stone-500'}`}
+                        >
+                          {subItem.name}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <button className="btn-primary w-full py-5">Shop Now</button>
             </div>
@@ -671,12 +734,19 @@ const ProductsPage = () => {
                     <p className="text-stone-500 text-base leading-relaxed mb-8 font-light">
                       {product.desc}
                     </p>
-                    <div className="flex items-center justify-between pt-8 border-t border-stone-50">
-                      <button className="text-spice-red font-bold flex items-center gap-2 hover:gap-4 transition-all uppercase tracking-widest text-xs">
-                        View Details <ChevronRight size={18} />
+                    <div className="flex flex-col gap-4 pt-8 border-t border-stone-50">
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const message = `Hello, I would like to enquire about this product: ${product.name}`;
+                          window.open(`https://wa.me/917544866033?text=${encodeURIComponent(message)}`, '_blank');
+                        }}
+                        className="w-full py-4 bg-stone-900 text-white rounded-2xl font-bold hover:bg-spice-red transition-all duration-500 shadow-lg shadow-stone-900/10 hover:shadow-spice-red/20 text-sm uppercase tracking-widest"
+                      >
+                        Enquiry Now
                       </button>
-                      <button className="w-12 h-12 bg-spice-red/10 rounded-2xl flex items-center justify-center text-spice-red hover:bg-spice-red hover:text-white transition-all duration-500 shadow-sm">
-                        <Utensils size={22} />
+                      <button className="text-spice-red font-bold flex items-center justify-center gap-2 hover:gap-4 transition-all uppercase tracking-widest text-[10px]">
+                        View Details <ChevronRight size={14} />
                       </button>
                     </div>
                   </div>
@@ -865,6 +935,87 @@ const GalleryPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+};
+
+const FounderMessagePage = () => {
+  return (
+    <div className="pt-24 bg-warm-bg min-h-screen">
+      {/* Page Header */}
+      <section className="bg-stone-900 py-32 px-6 text-center text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=2000" 
+            className="w-full h-full object-cover"
+            alt="Founder Background"
+          />
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mx-auto relative z-10"
+        >
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Leadership</span>
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Founder's Message</h1>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">A Vision for Authentic Taste</p>
+        </motion.div>
+      </section>
+
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
+                <img 
+                  src="15.jpeg" 
+                  alt="Founder" 
+                  className="w-full h-auto rounded-[2.5rem]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="absolute -bottom-10 -right-10 bg-spice-red p-10 rounded-[2rem] text-white shadow-2xl">
+                <h4 className="font-bold text-2xl">Mathura Singh</h4>
+                <p className="text-white/80 uppercase tracking-widest text-xs mt-2">Founder & Managing Director</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+                "Our journey is rooted in the belief that <span className="text-spice-red">quality</span> and <span className="text-mustard">tradition</span> should never be compromised."
+              </h2>
+              <div className="space-y-6 text-stone-600 text-lg font-light leading-relaxed">
+                <p>
+                  Welcome to Kelkem India Pvt Ltd. Our story began with a simple yet powerful vision: to bring the authentic, homemade taste of Indian pickles and spices to every dining table across the country.
+                </p>
+                <p>
+                  At Mathurasni, we understand that food is more than just sustenance; it's a connection to our heritage, our culture, and our memories. That's why we use only the finest ingredients, traditional recipes passed down through generations, and pure mustard oil to create products that resonate with the soul of India.
+                </p>
+                <p>
+                  As we grow, our commitment to quality, hygiene, and customer trust remains unwavering. We are constantly innovating to meet modern standards while staying true to our roots.
+                </p>
+                <p>
+                  Thank you for being a part of our journey. We promise to continue delivering the purity and taste that you and your family deserve.
+                </p>
+              </div>
+              <div className="pt-8">
+                <p className="font-bold text-stone-900 mt-4">Mathura Singh</p>
+                <p className="text-stone-400 text-sm">Founder, Kelkem India Pvt Ltd</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
@@ -1396,8 +1547,15 @@ const Products = () => {
                 <div className="p-10 text-left">
                   <p className="text-mustard text-[10px] font-bold uppercase tracking-[0.2em] mb-2">{product.category}</p>
                   <h3 className="text-2xl font-bold text-stone-900 mb-6 group-hover:text-spice-red transition-colors">{product.name}</h3>
-                  <button className="w-full py-4 bg-stone-900 text-white rounded-2xl font-bold hover:bg-spice-red transition-all duration-500 shadow-lg shadow-stone-900/10 hover:shadow-spice-red/20">
-                    Add to Cart
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const message = `Hello, I would like to enquire about this product: ${product.name}`;
+                      window.open(`https://wa.me/917544866033?text=${encodeURIComponent(message)}`, '_blank');
+                    }}
+                    className="w-full py-4 bg-stone-900 text-white rounded-2xl font-bold hover:bg-spice-red transition-all duration-500 shadow-lg shadow-stone-900/10 hover:shadow-spice-red/20"
+                  >
+                    Enquiry Now
                   </button>
                 </div>
               </motion.div>
@@ -1832,6 +1990,8 @@ export default function App() {
           </>
         ) : currentPage === 'company' ? (
           <CompanyPage />
+        ) : currentPage === 'founder' ? (
+          <FounderMessagePage />
         ) : currentPage === 'products' ? (
           <ProductsPage />
         ) : currentPage === 'gallery' ? (
