@@ -968,20 +968,30 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="aspect-video bg-stone-200 rounded-[3rem] overflow-hidden shadow-2xl relative group">
-                <div className="absolute inset-0 bg-stone-900/40 group-hover:bg-stone-900/20 transition-all duration-700 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <MapPin size={48} className="mx-auto mb-4 text-mustard" />
-                    <p className="font-bold uppercase tracking-widest text-xs">View on Google Maps</p>
-                  </div>
+              {/* Map Section */}
+              <div className="aspect-video bg-stone-200 rounded-[3rem] overflow-hidden shadow-2xl relative group border border-stone-100">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.623145455431!2d85.2796193!3d23.3656111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1001a938e3b%3A0x6d9a8e3b1a938e3b!2sKelkem%20India%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="grayscale hover:grayscale-0 transition-all duration-1000"
+                ></iframe>
+                <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/20 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <h4 className="font-bold text-lg mb-1 text-stone-900">Kelkem India Pvt Ltd</h4>
+                  <p className="text-stone-500 text-xs mb-4">Paryavaran Nagar, Hehal, Ranchi</p>
+                  <a 
+                    href="https://share.google/GGil8oHAfImVTtJ3o" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-spice-red font-bold uppercase tracking-widest text-[10px] hover:gap-4 transition-all"
+                  >
+                    Get Directions <ChevronRight size={14} />
+                  </a>
                 </div>
-                <img 
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Map Placeholder" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
               </div>
 
               {/* Social Links */}
@@ -1561,7 +1571,15 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-xl mb-1">Our Office</h4>
-                    <p className="text-stone-400 leading-relaxed">Paryavaran Nagar, Hehal, Ranchi 834005, Jharkhand, India</p>
+                    <p className="text-stone-400 leading-relaxed mb-2">Paryavaran Nagar, Hehal, Ranchi 834005, Jharkhand, India</p>
+                    <a 
+                      href="https://share.google/GGil8oHAfImVTtJ3o" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-mustard text-[10px] font-bold uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
+                    >
+                      View on Google Maps <ChevronRight size={14} />
+                    </a>
                   </div>
                 </div>
                 <div className="flex gap-8 group">
@@ -1600,11 +1618,54 @@ const Contact = () => {
   );
 };
 
+const MapSection = () => {
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Find Us</span>
+          <h2 className="text-5xl font-bold text-stone-900">Our Location</h2>
+        </motion.div>
+        
+        <div className="rounded-[3rem] overflow-hidden shadow-2xl border border-stone-100 h-[500px] relative group">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.623145455431!2d85.2796193!3d23.3656111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1001a938e3b%3A0x6d9a8e3b1a938e3b!2sKelkem%20India%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            className="grayscale hover:grayscale-0 transition-all duration-1000"
+          ></iframe>
+          <div className="absolute bottom-10 left-10 right-10 md:right-auto bg-white p-8 rounded-3xl shadow-2xl border border-stone-100 max-w-md transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+            <h4 className="font-bold text-xl mb-2 text-stone-900">Kelkem India Pvt Ltd</h4>
+            <p className="text-stone-500 text-sm mb-6">Paryavaran Nagar, Hehal, Ranchi 834005, Jharkhand, India</p>
+            <a 
+              href="https://share.google/GGil8oHAfImVTtJ3o" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-spice-red font-bold uppercase tracking-widest text-[10px] hover:gap-4 transition-all"
+            >
+              Get Directions <ChevronRight size={16} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) => {
   return (
-    <footer className="bg-stone-950 text-white pt-32 pb-12 px-6">
+    <footer className="bg-stone-950 text-white pt-16 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="space-y-8">
             <div className="flex items-center gap-3">
               <div className="w-14 h-14 bg-white rounded-2xl overflow-hidden flex items-center justify-center shadow-lg border border-white/10">
@@ -1657,7 +1718,7 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
           </div>
         </div>
 
-        <div className="pt-14 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-stone-500 text-xs uppercase tracking-[0.25em] font-semibold">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-stone-500 text-xs uppercase tracking-[0.25em] font-semibold">
 
   {/* Left Side */}
   <div className="space-y-2 text-center md:text-left">
@@ -1765,6 +1826,7 @@ export default function App() {
             <InstagramSection />
             <ContactCTA />
             <Contact />
+            <MapSection />
           </>
         ) : currentPage === 'company' ? (
           <CompanyPage />
