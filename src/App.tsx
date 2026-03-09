@@ -716,7 +716,7 @@ const ProductsPage = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   key={product.id}
                   onClick={() => setSelectedImage(product.image)}
-                  className="fmcg-card group cursor-pointer"
+                  className="fmcg-card group cursor-pointer flex flex-col h-full"
                 >
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <img 
@@ -729,12 +729,12 @@ const ProductsPage = () => {
                       {product.category}
                     </div>
                   </div>
-                  <div className="p-10">
+                  <div className="p-10 flex flex-col flex-grow">
                     <h3 className="text-3xl font-bold text-stone-900 mb-4 group-hover:text-spice-red transition-colors">{product.name}</h3>
                     <p className="text-stone-500 text-base leading-relaxed mb-8 font-light">
                       {product.desc}
                     </p>
-                    <div className="flex flex-col gap-4 pt-8 border-t border-stone-50">
+                    <div className="flex flex-col gap-4 pt-8 border-t border-stone-50 mt-auto">
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
@@ -1553,7 +1553,7 @@ const Products = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 key={product.id}
                 onClick={() => setSelectedImage(product.image)}
-                className="fmcg-card group cursor-pointer"
+                className="fmcg-card group cursor-pointer flex flex-col h-full"
               >
                 <div className="aspect-square overflow-hidden relative">
                   <img 
