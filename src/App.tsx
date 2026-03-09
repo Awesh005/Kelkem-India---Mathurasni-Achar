@@ -255,71 +255,89 @@ const CompanyPage = () => {
         </motion.div>
       </section>
 
-      {/* About Us Section */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">About Us</span>
-              <h2 className="text-5xl md:text-7xl font-bold mt-4 mb-10 text-stone-900 leading-[1.1]">Authentic Taste, <br/><span className="text-spice-red italic font-serif font-medium">Modern</span> Standards.</h2>
-              <div className="space-y-8 text-stone-600 leading-relaxed text-lg font-light">
-                <p>
-                  Kelkem India Private Limited is an emerging Indian company engaged in the manufacturing, marketing, and distribution of quality food products, pickles, spices, and FMCG goods.
-                </p>
-                <p>
-                  The company focuses on delivering traditional Indian flavors with modern quality standards, hygienic production, and reliable distribution.
-                </p>
-                <p>
-                  Headquartered in Ranchi, Jharkhand, Kelkem India Pvt Ltd aims to build trusted consumer brands that bring authentic taste, purity, and quality to every household.
-                </p>
-              </div>
-              
-              {/* Brand Highlight */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="mt-12 p-10 bg-warm-bg rounded-[2rem] border-l-8 border-spice-red shadow-sm"
-              >
-                <h4 className="text-spice-red font-bold mb-4 uppercase tracking-[0.2em] text-xs">Brand Highlight</h4>
-                <p className="text-stone-800 font-serif text-2xl italic leading-relaxed">
-                  "Mathurasni Achar represents traditional homemade taste prepared with carefully selected ingredients and pure mustard oil."
-                </p>
-              </motion.div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
-                <img 
-                  src="/22.jpeg" 
-                  alt="Kelkem India Production" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
-                />
-              </div>
-              <motion.div 
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 100, delay: 0.5 }}
-                className="absolute -bottom-10 -left-10 bg-mustard p-10 rounded-[2rem] text-white shadow-2xl"
-              >
-                <Award size={48} />
-                <p className="mt-4 font-bold text-xl uppercase tracking-widest">Quality <br/>Certified</p>
-              </motion.div>
-            </motion.div>
-          </div>
+    {/* About Us Section */}
+<section className="section-padding bg-white">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">
+          About Us
+        </span>
+
+        <h2 className="text-5xl md:text-7xl font-bold mt-4 mb-10 text-stone-900 leading-[1.1]">
+          Authentic Taste, <br/>
+          <span className="text-spice-red italic font-serif font-medium">
+            Modern
+          </span> Standards.
+        </h2>
+
+        <div className="space-y-8 text-stone-600 leading-relaxed text-lg font-light">
+          <p>
+            Kelkem India Private Limited is an emerging Indian company engaged in the manufacturing, marketing, and distribution of quality food products, pickles, spices, and FMCG goods.
+          </p>
+          <p>
+            The company focuses on delivering traditional Indian flavors with modern quality standards, hygienic production, and reliable distribution.
+          </p>
+          <p>
+            Headquartered in Ranchi, Jharkhand, Kelkem India Pvt Ltd aims to build trusted consumer brands that bring authentic taste, purity, and quality to every household.
+          </p>
         </div>
-      </section>
+
+        {/* Brand Highlight */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-12 p-10 bg-warm-bg rounded-[2rem] border-l-8 border-spice-red shadow-sm"
+        >
+          <h4 className="text-spice-red font-bold mb-4 uppercase tracking-[0.2em] text-xs">
+            Brand Highlight
+          </h4>
+
+          <p className="text-stone-800 font-serif text-2xl italic leading-relaxed">
+            "Mathurasni Achar represents traditional homemade taste prepared with carefully selected ingredients and pure mustard oil."
+          </p>
+        </motion.div>
+      </motion.div>
+
+      {/* IMAGE SIDE */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="relative"
+      >
+        <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
+          <img
+            src="/imageabout.jpg"
+            alt="Kelkem India Production"
+            className="w-full h-auto hover:scale-105 transition-transform duration-1000"
+          />
+        </div>
+
+        <motion.div
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 100, delay: 0.5 }}
+          className="absolute -bottom-10 -left-10 bg-mustard p-10 rounded-[2rem] text-white shadow-2xl"
+        >
+          <Award size={48} />
+          <p className="mt-4 font-bold text-xl uppercase tracking-widest">
+            Quality <br/> Certified
+          </p>
+        </motion.div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
       {/* Vision & Mission */}
       <section className="section-padding bg-warm-bg relative overflow-hidden">
@@ -400,6 +418,7 @@ const CompanyPage = () => {
 };
 
 const ProductsPage = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const products = [
     {
       id: 1,
@@ -589,7 +608,7 @@ const ProductsPage = () => {
       <section className="bg-stone-900 py-32 px-6 text-center text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://images.unsplash.com/photo-1615485247097-2599c0e01191?auto=format&fit=crop&q=80&w=2000" 
+            src="https://images.unsplash.com/photo-1664791461482-79f5deee490f?q=80&w=1153&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
             className="w-full h-full object-cover"
             alt="Pickles Background"
           />
@@ -633,7 +652,8 @@ const ProductsPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   key={product.id}
-                  className="fmcg-card group"
+                  onClick={() => setSelectedImage(product.image)}
+                  className="fmcg-card group cursor-pointer"
                 >
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <img 
@@ -705,6 +725,40 @@ const ProductsPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-5xl w-full max-h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-16 right-0 md:-right-16 text-white hover:text-mustard transition-colors p-2 bg-white/10 rounded-full backdrop-blur-md"
+              >
+                <X size={32} />
+              </button>
+              <img 
+                src={selectedImage} 
+                alt="Product Enlarged" 
+                className="max-w-full max-h-[85vh] object-contain rounded-3xl shadow-2xl border border-white/10"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -903,14 +957,14 @@ const ContactPage = () => {
                     <MapPin size={28} />
                   </div>
                   <h3 className="font-bold text-stone-900 mb-2 text-xl">Our Office</h3>
-                  <p className="text-stone-500 font-light leading-relaxed">Kelkem India Pvt Ltd<br/>Ranchi, Jharkhand, India</p>
+                  <p className="text-stone-500 font-light leading-relaxed">Paryavaran Nagar, Hehal<br/>Ranchi 834005, Jharkhand, India</p>
                 </div>
                 <div className="p-10 bg-white rounded-[2.5rem] shadow-xl border border-stone-100 group hover:shadow-2xl transition-all duration-500">
                   <div className="w-14 h-14 bg-mustard/10 rounded-2xl flex items-center justify-center text-mustard mb-6 group-hover:bg-mustard group-hover:text-white transition-colors">
                     <Phone size={28} />
                   </div>
                   <h3 className="font-bold text-stone-900 mb-2 text-xl">Call Us</h3>
-                  <p className="text-stone-500 font-light leading-relaxed">+91 98765 43210<br/>Mon - Sat, 9am - 6pm</p>
+                  <p className="text-stone-500 font-light leading-relaxed">07544866033<br/>Mon - Sat, 9am - 6pm</p>
                 </div>
               </div>
 
@@ -1135,6 +1189,7 @@ const Company = () => {
 const Products = () => {
   const categories = ["All", "Pickles", "Papads", "Wellness", "Fragrances"];
   const [activeTab, setActiveTab] = useState("All");
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const products = [
     {
@@ -1311,7 +1366,8 @@ const Products = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 key={product.id}
-                className="fmcg-card group"
+                onClick={() => setSelectedImage(product.image)}
+                className="fmcg-card group cursor-pointer"
               >
                 <div className="aspect-square overflow-hidden relative">
                   <img 
@@ -1338,6 +1394,40 @@ const Products = () => {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Lightbox Modal */}
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedImage(null)}
+              className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="relative max-w-5xl w-full max-h-full flex items-center justify-center"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button 
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute -top-16 right-0 md:-right-16 text-white hover:text-mustard transition-colors p-2 bg-white/10 rounded-full backdrop-blur-md"
+                >
+                  <X size={32} />
+                </button>
+                <img 
+                  src={selectedImage} 
+                  alt="Product Enlarged" 
+                  className="max-w-full max-h-[85vh] object-contain rounded-3xl shadow-2xl border border-white/10"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.div 
           initial={{ opacity: 0 }}
@@ -1471,7 +1561,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-xl mb-1">Our Office</h4>
-                    <p className="text-stone-400 leading-relaxed">Kelkem India Pvt Ltd, Ranchi, Jharkhand, India</p>
+                    <p className="text-stone-400 leading-relaxed">Paryavaran Nagar, Hehal, Ranchi 834005, Jharkhand, India</p>
                   </div>
                 </div>
                 <div className="flex gap-8 group">
@@ -1480,7 +1570,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-xl mb-1">Phone Number</h4>
-                    <p className="text-stone-400 leading-relaxed">+91 98765 43210</p>
+                    <p className="text-stone-400 leading-relaxed">07544866033</p>
                   </div>
                 </div>
                 <div className="flex gap-8 group">
@@ -1567,14 +1657,52 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-stone-500 text-[10px] uppercase tracking-[0.3em] font-bold">
-          <p>© 2024 Kelkem India Pvt Ltd. Crafting Tradition.</p>
-          <div className="flex gap-10">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
-          </div>
-        </div>
+        <div className="pt-14 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-stone-500 text-xs uppercase tracking-[0.25em] font-semibold">
+
+  {/* Left Side */}
+  <div className="space-y-2 text-center md:text-left">
+    <p className="text-stone-400">
+      © 2026 <span className="text-white font-bold">Kelkem India Pvt Ltd</span>. Crafting Tradition.
+    </p>
+
+    <p className="text-stone-600 text-[11px] normal-case tracking-normal">
+      Designed & Developed by{" "}
+      <a
+        href="https://bnintelhub.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-mustard font-semibold hover:text-white transition-colors"
+      >
+        BN Intelhub Pvt Ltd
+      </a>, STPI Ranchi
+    </p>
+  </div>
+
+  {/* Right Side Links */}
+  <div className="flex flex-wrap justify-center md:justify-end gap-8">
+    <a
+      href="#"
+      className="relative hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[1px] after:bg-mustard hover:after:w-full after:transition-all"
+    >
+      Privacy Policy
+    </a>
+
+    <a
+      href="#"
+      className="relative hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[1px] after:bg-mustard hover:after:w-full after:transition-all"
+    >
+      Terms of Service
+    </a>
+
+    <a
+      href="#"
+      className="relative hover:text-white transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[1px] after:bg-mustard hover:after:w-full after:transition-all"
+    >
+      Sitemap
+    </a>
+  </div>
+
+</div>
       </div>
     </footer>
   );
