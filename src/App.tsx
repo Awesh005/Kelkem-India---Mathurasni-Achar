@@ -957,7 +957,7 @@ const FounderMessagePage = () => {
           className="max-w-3xl mx-auto relative z-10"
         >
           <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Leadership</span>
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Founder's Message</h1>
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-none">Founders' Message</h1>
           <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">A Vision for Authentic Taste</p>
         </motion.div>
       </section>
@@ -965,25 +965,48 @@ const FounderMessagePage = () => {
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
-                <img 
-                  src="15.jpeg" 
-                  alt="Founder" 
-                  className="w-full h-auto rounded-[2.5rem]"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="absolute -bottom-10 -right-10 bg-spice-red p-10 rounded-[2rem] text-white shadow-2xl">
-                <h4 className="font-bold text-2xl">Mathura Singh</h4>
-                <p className="text-white/80 uppercase tracking-widest text-xs mt-2">Founder & Managing Director</p>
-              </div>
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
+                  <img 
+                    src="./boy.png" 
+                    alt="KAPIL PRASAD" 
+                    className="w-full h-auto rounded-[2.5rem]"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -right-6 bg-spice-red p-6 rounded-[1.5rem] text-white shadow-2xl z-10">
+                  <h4 className="font-bold text-lg">KAPIL PRASAD</h4>
+                  <p className="text-white/80 uppercase tracking-widest text-[10px] mt-1">Founder</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="relative"
+              >
+                <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
+                  <img 
+                    src="./girl.png" 
+                    alt="Meghna Bharti" 
+                    className="w-full h-auto rounded-[2.5rem]"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -right-6 bg-mustard p-6 rounded-[1.5rem] text-white shadow-2xl z-10">
+                  <h4 className="font-bold text-lg">Meghna Bharti</h4>
+                  <p className="text-white/80 uppercase tracking-widest text-[10px] mt-1">Founder</p>
+                </div>
+              </motion.div>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -1008,9 +1031,11 @@ const FounderMessagePage = () => {
                   Thank you for being a part of our journey. We promise to continue delivering the purity and taste that you and your family deserve.
                 </p>
               </div>
-              <div className="pt-8">
-                <p className="font-bold text-stone-900 mt-4">Mathura Singh</p>
-                <p className="text-stone-400 text-sm">Founder, Kelkem India Pvt Ltd</p>
+              <div className="pt-8 border-t border-stone-100 flex flex-col gap-2">
+                <div>
+                  <p className="font-bold text-stone-900">KAPIL PRASAD & Meghna Bharti</p>
+                  <p className="text-stone-400 text-sm">Founders, Kelkem India Pvt Ltd</p>
+                </div>
               </div>
             </motion.div>
           </div>
