@@ -1830,7 +1830,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-xl mb-1">Email Address</h4>
-                    <p className="text-stone-400 leading-relaxed">info@kelkemindia.com</p>
+                    <p className="text-stone-400 leading-relaxed">kelkemindia@gmail.com</p>
                   </div>
                 </div>
               </div>
