@@ -49,7 +49,8 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
     { name: 'Company', id: 'company', dropdown: [
       { name: 'About Us', id: 'company' },
       { name: 'Founder Message', id: 'founder' },
-      { name: 'Co-Founder Message', id: 'co-founder' }
+      { name: 'Co-Founder Message', id: 'co-founder' },
+      { name: 'CEO Message', id: 'ceo' }
     ]},
     { name: 'Products', id: 'products' },
     { name: 'Gallery', id: 'gallery' },
@@ -57,7 +58,7 @@ const Navbar = ({ currentPage, setCurrentPage }: { currentPage: string, setCurre
   ];
 
   const handleNavClick = (id: string) => {
-    if (['company', 'founder', 'co-founder', 'products', 'gallery', 'contact'].includes(id)) {
+    if (['company', 'founder', 'co-founder', 'ceo', 'products', 'gallery', 'contact'].includes(id)) {
       setCurrentPage(id);
       window.scrollTo(0, 0);
     } else {
@@ -1090,6 +1091,137 @@ const CoFounderMessagePage = () => {
   );
 };
 
+const CEOMessagePage = () => {
+  return (
+    <div className="pt-24 bg-warm-bg min-h-screen">
+
+      {/* Hero Section */}
+      <section className="bg-stone-900 py-32 px-6 text-center text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="./ceo.png"
+            className="w-full h-full object-cover"
+            alt="CEO Background"
+          />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mx-auto relative z-10"
+        >
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">
+            Leadership • Next Generation
+          </span>
+
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">
+            CEO Message
+          </h1>
+
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">
+            Vision • Innovation • Growth
+          </p>
+        </motion.div>
+      </section>
+
+
+      {/* Message Section */}
+      <section className="section-padding">
+        <div className="max-w-7xl mx-auto">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative max-w-md mx-auto lg:mx-0 order-1 lg:order-2"
+            >
+              <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-white p-4">
+                <img
+                  src="/ceo.png"
+                  alt="Mr Utsav Prasad"
+                  className="w-full h-auto rounded-[2.5rem]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
+              <div className="absolute -bottom-6 -left-6 bg-mustard p-8 rounded-[1.5rem] text-white shadow-2xl z-10">
+                <h4 className="font-bold text-2xl">Mr. Utsav Prasad</h4>
+                <p className="text-white/80 uppercase tracking-widest text-xs mt-1">
+                  CEO
+                </p>
+              </div>
+            </motion.div>
+
+
+            {/* Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8 order-2 lg:order-1"
+            >
+              <div className="text-mustard mb-6">
+                <Quote size={64} className="opacity-20" />
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+                "Building a <span className="text-spice-red">modern brand</span> rooted in 
+                <span className="text-mustard"> tradition and purity</span>."
+              </h2>
+
+              <div className="space-y-6 text-stone-600 text-lg font-light leading-relaxed">
+
+                <p>
+                  Mr. Utsav Prasad is the young and dynamic CEO of Mathurasni Pickles.
+                  He began his entrepreneurial journey at the remarkable age of 16,
+                  driven by a strong passion for business, innovation, and building
+                  meaningful brands.
+                </p>
+
+                <p>
+                  He is currently pursuing his studies as a 12th Commerce student at
+                  St. Xavier’s College, Ranchi, Jharkhand. Along with his education,
+                  he is deeply committed to developing the Mathurasni Pickles brand
+                  and strengthening its presence in the FMCG market.
+                </p>
+
+                <p>
+                  Under his leadership, the company focuses on delivering premium
+                  quality products made with purity and authenticity. The pickles are
+                  prepared using traditional recipes and pure mustard oil to preserve
+                  the original homemade taste loved by generations.
+                </p>
+
+                <p>
+                  His vision is to transform Mathurasni Pickles into a trusted
+                  household name across India by combining traditional flavors with
+                  modern business strategies, quality standards, and customer trust.
+                </p>
+
+              </div>
+
+              <div className="pt-8 border-t border-stone-100">
+                <p className="font-bold text-stone-900 text-xl">
+                  Mr. Utsav Prasad
+                </p>
+                <p className="text-stone-400 text-sm">
+                  CEO, Mathurasni Pickles
+                </p>
+              </div>
+
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+};
+
 const ContactPage = () => {
   return (
     <div className="pt-24 bg-warm-bg min-h-screen">
@@ -1927,6 +2059,7 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
                 <li><button onClick={() => { setCurrentPage('company'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Our Company</button></li>
                 <li><button onClick={() => { setCurrentPage('founder'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Founder Message</button></li>
                 <li><button onClick={() => { setCurrentPage('co-founder'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Co-Founder Message</button></li>
+                <li><button onClick={() => { setCurrentPage('ceo'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">CEO Message</button></li>
                 <li><button onClick={() => { setCurrentPage('products'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Products</button></li>
                 <li><button onClick={() => { setCurrentPage('gallery'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Visual Gallery</button></li>
                 <li><button onClick={() => { setCurrentPage('contact'); window.scrollTo(0, 0); }} className="hover:text-white transition-colors">Contact Us</button></li>
@@ -2103,6 +2236,8 @@ export default function App() {
           <FounderMessagePage />
         ) : currentPage === 'co-founder' ? (
           <CoFounderMessagePage />
+        ) : currentPage === 'ceo' ? (
+          <CEOMessagePage />
         ) : currentPage === 'products' ? (
           <ProductsPage />
         ) : currentPage === 'gallery' ? (
