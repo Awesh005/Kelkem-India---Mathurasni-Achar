@@ -1906,7 +1906,7 @@ const Footer = ({ setCurrentPage }: { setCurrentPage: (page: string) => void }) 
               </div>
               <div>
                 <h1 className="text-2xl font-bold leading-none text-white tracking-tighter">Mathurasni</h1>
-                <p className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Achar & Spices • Since 1977</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-mustard font-bold">Achar & Spices • <br/>Since 1977</p>
               </div>
             </div>
             <p className="text-stone-400 text-sm leading-relaxed font-light">
