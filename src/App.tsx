@@ -221,7 +221,7 @@ const Hero = () => {
           >
             <span className="inline-flex items-center gap-2 py-2 px-5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
               <span className="w-2 h-2 bg-mustard rounded-full animate-pulse"></span>
-              Kelkem India Pvt Ltd • Since 1977
+              Kelkem India Pvt Ltd
             </span>
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-[0.9] text-white">
               Taste the <span className="text-mustard italic font-serif font-medium">Soul</span> of India.
@@ -305,7 +305,7 @@ const CompanyPage = () => {
         >
           <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Our Legacy • Since 1977</span>
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Our Company</h1>
-          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Kelkem India Pvt Ltd • Since 1977</p>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Kelkem India Pvt Ltd</p>
         </motion.div>
       </section>
 
@@ -320,7 +320,7 @@ const CompanyPage = () => {
         viewport={{ once: true }}
       >
         <span className="text-mustard font-bold uppercase tracking-[0.3em] text-xs mb-6 block">
-          About Us • Since 1977
+          About Us 
         </span>
 
         <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold mt-4 mb-10 text-stone-900 leading-[1.1]">
@@ -1028,9 +1028,9 @@ const CoFounderMessagePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto relative z-10"
         >
-          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Leadership • Since 1977</span>
+          <span className="text-mustard font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Leadership • Since 2021</span>
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-none">Co-Founder's Message</h1>
-          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Empowering Tradition & Innovation • Since 1977</p>
+          <p className="text-stone-400 text-lg uppercase tracking-[0.3em] font-light">Empowering Tradition & Innovation • Since 2021</p>
         </motion.div>
       </section>
 
@@ -1065,7 +1065,7 @@ const CoFounderMessagePage = () => {
             >
               <div className="text-mustard mb-6"><Quote size={64} className="opacity-20" /></div>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
-                "Reviving our <span className="text-spice-red">legacy</span> with a vision for <span className="text-mustard">empowerment</span> and growth."
+                "Reviving our <span className="text-spice-red">legacy</span> with a vision for <span className="text-mustard">Women's empowerment</span> and growth."
               </h2>
               <div className="space-y-6 text-stone-600 text-lg font-light leading-relaxed">
                 <p>
